@@ -18,8 +18,6 @@ A generic express-js server with the bare minimum code for easy understanding.
 
 ## Installation 
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 ```bash
 git clone https://github.com/robertIanClarkson/THREE-js-Simple-Example.git
 cd THREE-js-Simple-Example

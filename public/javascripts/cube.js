@@ -6,9 +6,9 @@ var scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
 // camera - where you are viewing from
-var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 2000);
-camera.position.set(5, 5, 5); // 
-camera.lookAt(new THREE.Vector3(0, 0, 0));
+var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 2000); // see THREE doc
+camera.position.set(5, 5, 5); // location
+camera.lookAt(new THREE.Vector3(0, 0, 0)); // look at origin 
 
 // render
 var renderer = new THREE.WebGLRenderer();
@@ -19,28 +19,30 @@ container.appendChild(renderer.domElement);
 // axis - xyz lines
 scene.add(new THREE.AxesHelper(3));
 
+// Init a group
+var obj = new THREE.Group();
+
 // cube - object
-var geometry = new THREE.BoxGeometry(3, 3, 3);
-var material = new THREE.MeshBasicMaterial({ color: 0x000000 });
-var cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+var geometry = new THREE.BoxGeometry(3, 3, 3); // 3x3x3 cube
+var material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // color = black
+var cube = new THREE.Mesh(geometry, material); // cube instance
+obj.add(cube); // add black cube to group
 
 // edge - outline
-var edges = new THREE.EdgesGeometry(geometry);
-var line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xff00ff }));
-scene.add(line);
+var edges = new THREE.EdgesGeometry(geometry); // get edges of cube
+var line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xff00ff })); // color = magenta
+obj.add(line); // add magenta edges to group
+
+scene.add(obj);
 
 // helper function (degree to radians) bc THREE uses radians (unit circle)
-function setAngle(cube, line, axis, degree) {
+function setAngle(obj, axis, degree) {
   if(axis == 'x') {
-    cube.rotation.x = degree * (Math.PI / 180)
-    line.rotation.x = degree * (Math.PI / 180)
+    obj.rotation.x = degree * (Math.PI / 180)
   } else if(axis == 'y') {
-    cube.rotation.y = degree * (Math.PI / 180)
-    line.rotation.y = degree * (Math.PI / 180)
+    obj.rotation.y = degree * (Math.PI / 180)
   } else if(axis == 'z') {
-    cube.rotation.z = degree * (Math.PI / 180)
-    line.rotation.z = degree * (Math.PI / 180)
+    obj.rotation.z = degree * (Math.PI / 180)
   }
 }
 
@@ -53,7 +55,7 @@ var animate = function () {
   outputX.innerHTML = sliderX.value;
   sliderX.oninput = function () {
     outputX.innerHTML = this.value;
-    setAngle(cube, line, 'x', this.value)
+    setAngle(obj, 'x', this.value)
   }
 
   // y-axis
@@ -62,7 +64,7 @@ var animate = function () {
   outputY.innerHTML = sliderY.value;
   sliderY.oninput = function () {
     outputY.innerHTML = this.value;
-    setAngle(cube, line, 'y', this.value)
+    setAngle(obj, 'y', this.value)
   }
 
   // z-axis
@@ -71,7 +73,7 @@ var animate = function () {
   outputZ.innerHTML = sliderZ.value;
   sliderZ.oninput = function () {
     outputZ.innerHTML = this.value;
-    setAngle(cube, line, 'z', this.value)
+    setAngle(obj, 'z', this.value)
   }
 
   renderer.render(scene, camera);

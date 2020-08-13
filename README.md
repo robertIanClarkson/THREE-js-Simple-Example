@@ -14,6 +14,8 @@ Hope this helps you!
  
 A generic express-js server with the bare minimum code for easy understanding.
 
+Used for a raspberry pi project with sensors [here!](https://github.com/robertIanClarkson/Cube-Interface) 
+
 **Files to look at are:** 
 - **views/index.jade** --> *html*
 - **public/javascripts/cube.js** --> *logic*

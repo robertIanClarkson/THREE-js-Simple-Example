@@ -4,9 +4,11 @@ A simple cube object in a css container with sliders for x, y, z axis.
 
 Code is well commented and is a good place to start when learning THREEjs.
 
-It took me a few hours to get this far as I have never done anything with 3d models. I figured I would share it to help someone else!
+It took me a few hours to get this far because I have never done anything with 3D models. I figured I would share it to help someone else!
 
 Hope this helps you! 
+
+<img src="./readme_images/screenshot.png">
 
 ## About
  

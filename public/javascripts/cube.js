@@ -6,13 +6,13 @@ var scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
 // camera - where you are viewing from
-var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 2000); // see THREE doc
+var camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientWidth, 1, 2000); // see THREE doc
 camera.position.set(5, 5, 5); // location
 camera.lookAt(new THREE.Vector3(0, 0, 0)); // look at origin 
 
 // render
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+renderer.setSize(container.clientWidth, container.clientWidth);
 renderer.setClearColor(0xffffff, 0);
 container.appendChild(renderer.domElement);
 

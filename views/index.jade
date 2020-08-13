@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col.s6
+        h1 hello
+      .col.s6
+        div#my-cube
+    .row
+      .col.s6
+        h1 world
+      .col.s6
+        .row
+          .col.s1
+            h6 X
+          .col.s10
+            input#accel-x(type="range" min="-180" max="180" value="0")
+          .col.s1
+            h6#accel-x-val 0
+        .row
+          .col.s1
+            h6 Y
+          .col.s10
+            input#accel-y(type="range" min="-180" max="180" value="0")
+          .col.s1
+            h6#accel-y-val 0
+        .row
+          .col.s1
+            h6 Z
+          .col.s10
+            input#accel-z(type="range" min="-180" max="180" value="0")
+          .col.s1
+            h6#accel-z-val 0
+
+  script(src="./javascripts/cube.js")

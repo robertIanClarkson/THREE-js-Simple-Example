@@ -7,14 +7,14 @@ scene.background = new THREE.Color(0xffffff);
 
 // camera - where you are viewing from
 var camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientWidth, 1, 2000); // see THREE doc
-camera.position.set(5, 5, 5); // location
+camera.position.set(5, 5, 5); // location of camera relative to origin - xyz
 camera.lookAt(new THREE.Vector3(0, 0, 0)); // look at origin 
 
 // render
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(container.clientWidth, container.clientWidth);
 renderer.setClearColor(0xffffff, 0);
-container.appendChild(renderer.domElement);
+container.appendChild(renderer.domElement); // canvas added to html here
 
 // axis - xyz lines
 scene.add(new THREE.AxesHelper(3));
@@ -22,13 +22,13 @@ scene.add(new THREE.AxesHelper(3));
 // Init a group
 var obj = new THREE.Group();
 
-// cube - object
+// cube - mesh
 var geometry = new THREE.BoxGeometry(3, 3, 3); // 3x3x3 cube
 var material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // color = black
 var cube = new THREE.Mesh(geometry, material); // cube instance
 obj.add(cube); // add black cube to group
 
-// edge - outline
+// edges - outline
 var edges = new THREE.EdgesGeometry(geometry); // get edges of cube
 var line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xff00ff })); // color = magenta
 obj.add(line); // add magenta edges to group
@@ -49,7 +49,7 @@ function setAngle(obj, axis, degree) {
 var animate = function () {
   requestAnimationFrame(animate);
 
-  // x-axis  
+  // x-axis - slider
   var sliderX = document.getElementById("accel-x");
   var outputX = document.getElementById("accel-x-val");
   outputX.innerHTML = sliderX.value;
@@ -58,7 +58,7 @@ var animate = function () {
     setAngle(obj, 'x', this.value)
   }
 
-  // y-axis
+  // y-axis - slider
   var sliderY = document.getElementById("accel-y");
   var outputY = document.getElementById("accel-y-val");
   outputY.innerHTML = sliderY.value;
@@ -67,7 +67,7 @@ var animate = function () {
     setAngle(obj, 'y', this.value)
   }
 
-  // z-axis
+  // z-axis - slider
   var sliderZ = document.getElementById("accel-z");
   var outputZ = document.getElementById("accel-z-val");
   outputZ.innerHTML = sliderZ.value;

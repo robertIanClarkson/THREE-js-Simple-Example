@@ -24,8 +24,20 @@ var obj = new THREE.Group();
 
 // cube - mesh
 var geometry = new THREE.BoxGeometry(3, 3, 3); // 3x3x3 cube
-var material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // color = black
+var material = new THREE.MeshBasicMaterial( { color:0xffffff, vertexColors: THREE.FaceColors } );
 var cube = new THREE.Mesh(geometry, material); // cube instance
+cube.geometry.faces[0].color.setHex(  0xffd000 );
+cube.geometry.faces[1].color.setHex(  0xffd000 );
+cube.geometry.faces[2].color.setHex(  0x602ff7 );
+cube.geometry.faces[3].color.setHex(  0x602ff7 );
+cube.geometry.faces[4].color.setHex(  0xff46a4 );
+cube.geometry.faces[5].color.setHex(  0xff46a4 );
+cube.geometry.faces[6].color.setHex(  0xabacab );
+cube.geometry.faces[7].color.setHex(  0xabacab );
+cube.geometry.faces[8].color.setHex(  0x5ac18e );
+cube.geometry.faces[9].color.setHex(  0x5ac18e );
+cube.geometry.faces[10].color.setHex( 0xf9e2f0 );
+cube.geometry.faces[11].color.setHex( 0xf9e2f0 );
 obj.add(cube); // add black cube to group
 
 // edges - outline
